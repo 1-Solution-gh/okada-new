@@ -17,7 +17,7 @@ jobs:
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x'
+        dotnet-version: '9.0.0'
 
     - name: Install MAUI workload
       run: dotnet workload install maui
@@ -26,7 +26,7 @@ jobs:
       run: dotnet restore
 
     - name: Build APK
-      run: dotnet publish -f net8.0-android -c Release -p:AndroidPackageFormat=apk
+      run: dotnet publish -f net9.0-android -c Release -p:AndroidPackageFormat=apk
 
     - name: Create GitHub Release with APK and Notes
       uses: softprops/action-gh-release@v2
