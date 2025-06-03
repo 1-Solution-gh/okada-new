@@ -1,14 +1,55 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="OkadaGoApp.MainPage">
+             x:Class="OkadaGoApp.MainPage"
+             BackgroundColor="White">
 
-    <VerticalStackLayout>
-        <Label Text="This Application is under development"
-               FontSize="24"
-               FontAttributes="Italic"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid>
+        <!-- Map Control -->
+        <WebView x:Name="MapWebView" />
+
+        <!--- Search and UI Overlay -->
+        <StackLayout Padding="10"
+                    VerticalOptions="End"
+                    BackgroundColor="Transparent">
+                <Border
+                        Background="White"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="8"
+                        Margin="0, 0, 0, 20">
+                    <Grid ColumnDefinitions="*, Auto">
+                        <Entry Placeholder="Where to?"
+                                FontSize="15" />
+                        <Button Text="Search"
+                                Grid.Column="1"
+                                BackgroundColor="#eeeeee"
+                                TextColor="Black"
+                                Padding="10, 5"
+                                CornerRadius="8" />
+                    </Grid>
+                </Border>
+        <!--- Bottom Navigation -->
+        <Grid ColumnDefinitions="*, *, *"
+                BackgroundColor="white"
+                Padding="10, 5"
+                VerticalOptions="End">
+            <StackLayout HorizontalOptions="Center">
+                    <Label Text="Home" 
+                            FontAttributes="Bold"
+                            FontSize="12" />
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center">
+                <Label Text="Rides"
+                        FontAttributes="Bold"
+                        FontSize="12" />
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center">
+                <Label Text="Account"
+                        FontAttributes="Bold"
+                        FontSize="12" />
+            </StackLayout>
+        </Grid>
+            </StackLayout>
+    </Grid>
 
 </ContentPage>
