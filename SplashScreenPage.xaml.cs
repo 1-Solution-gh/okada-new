@@ -20,11 +20,11 @@ namespace OkadaGoApp
             await Task.Delay(3000);
             // Fade out before navigating 
             await this.FadeTo(0, 500);
-            // Navigate to AppShell (correct way)
-            if (Application.Current?.Windows?.Count > 0 && Application.Current.Windows[0] != null)
-            {
-                Application.Current.Windows[0].Page = new AppShell();
-            }
+            // Navigate safely to AppShell
+        MainThread.BeginInvokeOnMainThread(() =>
+        {
+            Application.Current.MainPage = new AppShell();
+        });
         }
     }
 }
