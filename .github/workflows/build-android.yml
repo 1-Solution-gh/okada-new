@@ -1,0 +1,38 @@
+name: Build Android APK with Auto Release Notes
+
+on:
+  push:
+    tags:
+      - 'v*'  # Trigger when you push tags like v1.0.0
+
+jobs:
+  build:
+    name: Build and Release Android APK
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Install MAUI workload
+      run: dotnet workload install maui
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build APK
+      run: dotnet publish -f net8.0-android -c Release -p:AndroidPackageFormat=apk
+
+    - name: Create GitHub Release with APK and Notes
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          **/Release/net8.0-android/publish/*.apk
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
