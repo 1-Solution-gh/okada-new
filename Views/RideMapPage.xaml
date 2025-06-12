@@ -1,0 +1,20 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+x:Class="Okada.Views.RideMapPage"
+Title="Route">
+    <Grid>
+        <maps:Map x:Name="MainMap" MapType="Street" IsShowingUser="True" HeightRequest="500" />
+
+        <Border BackgroundColor="White"
+            VerticalOptions="End"
+            HeightRequest="200"
+            Padding="20">
+            <VerticalStackLayout Spacing="10">
+                <Label x:Name="FareLabel" Text="Estimated Fare: GHS 0" FontSize="18" />
+                <Button Text="Request Ride" Clicked="OnRequestRideClicked" />
+            </VerticalStackLayout>
+        </Border>
+    </Grid>
+
+</ContentPage>

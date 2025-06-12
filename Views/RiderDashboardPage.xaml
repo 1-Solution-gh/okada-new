@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+x:Class="Okada.Views.RiderDashboardPage"
+Title="Okada Dashboard">
+    <ContentPage.Resources>
+        <Style TargetType="ContentView">
+            <Setter Property="IsVisible"
+Value="False" />
+        </Style>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="Auto,*,Auto">
+        <!-- Map view -->
+        <maps:Map x:Name="DriverMap" MapType="Street" IsShowingUser="True" HeightRequest="300" Grid.Row="0" />
+
+        <!-- Content Views -->
+        <Grid Grid.Row="1">
+            <ContentView x:Name="TripsView">
+                <ScrollView>
+                    <VerticalStackLayout x:Name="TripsStack"
+                                     Padding="20">
+                        <Label Text="Trips History" />
+                    </VerticalStackLayout>
+                </ScrollView>
+            </ContentView>
+            <ContentView x:Name="EarningsView">
+                <ScrollView>
+                    <VerticalStackLayout x:Name="EarningsStack"
+                                     Padding="20">
+                        <Label Text="Earnings History" />
+                    </VerticalStackLayout>
+                </ScrollView>
+            </ContentView>
+            <ContentView x:Name="AccountView">
+                <VerticalStackLayout Padding="20">
+                    <Label Text="Accounts" />
+                </VerticalStackLayout>
+            </ContentView>
+        </Grid>
+
+        <!-- Bottom Navigation -->
+        <Grid Grid.Row="2"
+          Padding="10"
+          BackgroundColor="white"
+          HeightRequest="80"
+          VerticalOptions="End">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    BackgroundColor="white"
+                Text="Trips"
+                FontAttributes="Bold"
+                TextColor="#444"
+                Clicked="OnTripsClicked" />
+            <Button Grid.Column="1"
+                    BackgroundColor="white"
+                Text="Earnings"
+                FontAttributes="Bold"
+                TextColor="#444"
+                Clicked="OnEarningsClicked" />
+            <Button Grid.Column="2"
+                    BackgroundColor="white"
+                Text="Account"
+                FontAttributes="Bold"
+                TextColor="#444"
+                Clicked="OnAccountClicked" />
+        </Grid>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Okada.Views.RiderCheckModal"
+             Title="Confirm Status">
+    <VerticalStackLayout Spacing="20"
+                         Padding="20">
+        <Label 
+            Text="Are you a Rider?"
+            FontSize="20" />
+        <RadioButton x:Name="YesRadio"
+                     Content="Yes"
+                     GroupName="RiderGroup" />
+        <RadioButton x:Name="NoRadio"
+                     Content="No"
+                     GroupName="RiderGroup" />
+        <Button Text="Proceed"
+                Clicked="OnProceedClicked" />
+    </VerticalStackLayout>
+</ContentPage>

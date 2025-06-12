@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             x:Class="Okada.Views.MainPage"
+             Title="Okada Go"
+             Appearing="OnPageAppearing">
+    <ContentPage.Resources>
+        <Style x:Key="TabButtonStyle"
+               TargetType="Button">
+            <Setter Property="BackgroundColor"
+                    Value="Transparent" />
+            <Setter Property="TextColor"
+                    Value="Gray" />
+        </Style>
+        <Style x:Key="TabButtonActiveStyle"
+               TargetType="Button"
+               BasedOn="{StaticResource TabButtonStyle}">
+            <Setter Property="TextColor"
+                    Value="Green" />
+            <Setter Property="FontAttributes"
+                    Value="Bold" />
+        </Style>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="*, Auto">
+        <maps:Map x:Name="MainMap"
+                  IsShowingUser="True"
+                  MapType="Street"
+                  HeightRequest="500" />
+        <Entry Placeholder="Where to?"
+               IsReadOnly="True"
+               Margin="10"
+               VerticalOptions="Start"
+               Focused="WhereToEntry_Focused"/>
+        <Grid Grid.Row="1"
+              Padding="10"
+              BackgroundColor="#f2f2f2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="HomeTabButton" 
+                    Grid.Column="0"
+                    Text="Home"
+                    Style="{StaticResource TabButtonActiveStyle}"
+                    Clicked="OnHomeClicked" />
+            <Button x:Name="RidesTabButton" 
+                    Grid.Column="1"
+                    Text="Rides"
+                    Style="{StaticResource TabButtonStyle}"
+                    Clicked="OnRidesClicked" />
+            <Button x:Name="AccountTabButton" 
+                    Grid.Column="2"
+                    Text="Account"
+                    Style="{StaticResource TabButtonStyle}"
+                    Clicked="OnAccountClicked"/>
+        </Grid>
+    </Grid>
+</ContentPage>
