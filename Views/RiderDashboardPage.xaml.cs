@@ -127,32 +127,32 @@ public partial class RiderDashboardPage : ContentPage
     }
 
     private async Task LoadTripsAsync()
+{
+    try
     {
-        try
+        var response = await _httpClient.GetAsync($"api.php?endpoint=get_trips&user_id={_phoneNumber}");
+        if (!response.IsSuccessStatusCode)
         {
-            var response = await _httpClient.GetAsync($"index.php?endpoint=get_trips&user_id={_phoneNumber}");
-            if (!response.IsSuccessStatusCode)
-            {
-                await DisplayAlert("Error", "Failed to load trips from server.", "OK");
-                return;
-            }
-
-            var json = await response.Content.ReadAsStringAsync();
-            var trips = JsonSerializer.Deserialize<List<Trip>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-
-            TripsStack.Children.Clear();
-            foreach (var trip in trips ?? new List<Trip>())
-            {
-                TripsStack.Children.Add(new Label
-                {
-                    Text = $"{trip.Date:dd MMM} - {trip.DestinationAddress} ({trip.Status})",
-                    FontSize = 14
-                });
-            }
+            await DisplayAlert("Error", "Failed to load trips from server.", "OK");
+            return;
         }
-        catch (Exception ex)
+
+        var json = await response.Content.ReadAsStringAsync();
+        var trips = JsonSerializer.Deserialize<List<Trip>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+        TripsStack.Children.Clear();
+        foreach (var trip in trips ?? new List<Trip>())
         {
-            await DisplayAlert("Error", $"Could not load trips: {ex.Message}", "OK");
+            TripsStack.Children.Add(new Label
+            {
+                Text = $"{trip.Date:dd MMM} - {trip.Destination} ({trip.Status})",
+                FontSize = 14
+            });
         }
     }
+    catch (Exception ex)
+    {
+        await DisplayAlert("Error", $"Could not load trips: {ex.Message}", "OK");
+    }
+}
 }
