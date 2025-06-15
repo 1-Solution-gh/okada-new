@@ -1,4 +1,3 @@
-﻿using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +8,6 @@ namespace Okada.Models
 {
     public class Trip
     {
-        [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
         public string PhoneNumber { get; set; }
