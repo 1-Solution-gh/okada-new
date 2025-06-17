@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="OG.WhereToPage"
+             Title="Where To?">
+
+    <Grid>
+        <ScrollView>
+            <StackLayout Padding="20" Spacing="10">
+                <Label Text="Enter Starting Location" FontAttributes="Bold" />
+                <Entry x:Name="originEntry" Placeholder="Pickup Address" />
+                <ListView x:Name="originList"
+                      IsVisible="False"
+                      HeightRequest="100"
+                      BackgroundColor="White"
+                      SeparatorVisibility="None"
+                      SelectionMode="Single" />
+
+                <Label Text="Enter Destination" FontAttributes="Bold" />
+                <Entry x:Name="destinationEntry" Placeholder="Dropoff Address" />
+                <ListView x:Name="destinationList"
+                      IsVisible="False"
+                      HeightRequest="100"
+                      BackgroundColor="White"
+                      SeparatorVisibility="None"
+                      SelectionMode="Single" />
+
+                <!--<Button Text="Continue" Clicked="OnContinueClicked" HorizontalOptions="Center" />-->
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Bottom Sheet Modal -->
+        <Grid x:Name="bottomSheet"
+          BackgroundColor="White"
+          IsVisible="False"
+          Padding="20"
+          VerticalOptions="End"
+          HeightRequest="200"
+          TranslationY="200">
+
+            <StackLayout>
+                <Label Text="Estimated Fare" FontAttributes="Bold" FontSize="18" />
+                <Label x:Name="fareLabel" Text="GHS 0.00" FontSize="24" TextColor="Green" />
+                <Button Text="Request Ride" Clicked="OnRequestRideClicked" BackgroundColor="Black" TextColor="White" />
+            </StackLayout>
+        </Grid>
+    </Grid>
+
+</ContentPage>
