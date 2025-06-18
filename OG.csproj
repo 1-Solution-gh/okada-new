@@ -21,7 +21,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>OG</ApplicationTitle>
+		<ApplicationTitle>Okada Go</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.og</ApplicationId>
@@ -40,10 +40,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.png" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.png" Color="#FFFFFF" BaseSize="196,196" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -71,12 +71,30 @@
 	  <MauiXaml Update="LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PhoneLoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PhoneVerifyPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="RegisterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="WhereToPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
+	  <PackageReference Include="Xamarin.Google.Android.Play.Core">
+	    <Version>1.10.3.18</Version>
+	  </PackageReference>
+	  <PackageReference Include="Xamarin.GooglePlayServices.SafetyNet">
+	    <Version>118.1.0.6</Version>
+	  </PackageReference>
+	  <PackageReference Include="Xamarin.GooglePlayServices.Tasks">
+	    <Version>118.3.0.2</Version>
+	  </PackageReference>
 	</ItemGroup>
 
 </Project>

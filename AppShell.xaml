@@ -9,7 +9,7 @@
 
     <ShellContent
         Title="Join Okada Go"
-        ContentTemplate="{DataTemplate local:RegisterPage}"
-        Route="RegisterPage" />
+        ContentTemplate="{DataTemplate local:PhoneLoginPage}"
+        Route="PhoneLoginPage" />
 
 </Shell>
